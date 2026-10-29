@@ -1,0 +1,1293 @@
+/* ── Miniflux Custom CSS · Feedbin-Look ──────────────────────────────
+   Hell:  Feedbin Light
+   Dunkel: Feedbin Dark (via prefers-color-scheme)
+   Einspaltiges Layout bleibt erhalten.                              */
+
+/* ═══════════════ Light ═══════════════ */
+:root {
+  --font-family: -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  /* Serif für den Fließtext. Auf Sans umstellen: --font-serif: var(--font-family); */
+  --font-serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia,
+    serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  /* eigene Tokens */
+  --surface: #fafafa;
+  --surface-hover: #f3f3f3;
+  --hairline: #e8e8e8;
+  --accent: #0867e2;
+  --accent-soft: rgba(8, 103, 226, 0.14);
+  --text-muted: #6f6f6f;
+  --entry-link-color: #111111;
+  --radius: 6px;
+  --ease: cubic-bezier(0.2, 0, 0.2, 1);
+
+  /* schwebende Leiste (Apple-Look) */
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(0, 0, 0, 0.09);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.18),
+    0 1px 2px rgba(0, 0, 0, 0.08);
+
+  /* Miniflux-Variablen */
+  --body-color: #39404b;
+  --body-background: #ffffff;
+  --hr-border-color: #e8e8e8;
+  --title-color: #111111;
+  --link-color: #0867e2;
+  --link-focus-color: #0867e2;
+  --link-hover-color: #111111;
+  --link-visited-color: #0867e2;
+
+  --header-list-border-color: #e8e8e8;
+  --header-link-color: #5c5c5c;
+  --header-link-focus-color: #111111;
+  --header-link-hover-color: #111111;
+  --header-active-link-color: #111111;
+
+  --page-header-title-border-color: transparent;
+
+  --logo-color: #111111;
+  --logo-hover-color-span: #111111;
+
+  --table-border-color: #ededed;
+  --table-th-background: #fafafa;
+  --table-th-color: #39404b;
+  --table-tr-hover-background-color: #f5f5f5;
+  --table-tr-hover-color: #111111;
+
+  --button-primary-border-color: #0867e2;
+  --button-primary-background: #0867e2;
+  --button-primary-color: #ffffff;
+  --button-primary-focus-border-color: #0756bd;
+  --button-primary-focus-background: #0756bd;
+
+  --input-border: 1px solid #dedede;
+  --input-background: #ffffff;
+  --input-color: #1a1a1a;
+  --input-placeholder-color: #8f8f8f;
+
+  --input-focus-color: #111111;
+  --input-focus-border-color: #0867e2;
+  --input-focus-box-shadow: 0 0 0 3px var(--accent-soft);
+
+  --alert-color: #8a6400;
+  --alert-background-color: #fff9e6;
+  --alert-border-color: #f2e0a8;
+
+  --alert-success-color: #2a7a3b;
+  --alert-success-background-color: #f0faf2;
+  --alert-success-border-color: #c2e5c9;
+
+  --alert-error-color: #a53a3a;
+  --alert-error-background-color: #fdf1f1;
+  --alert-error-border-color: #f0c8c8;
+
+  --alert-info-color: #2b5d9e;
+  --alert-info-background-color: #f0f6fd;
+  --alert-info-border-color: #c3d7ef;
+
+  --panel-background: #fafafa;
+  --panel-border-color: #e8e8e8;
+  --panel-color: #39404b;
+
+  --modal-background: #ffffff;
+  --modal-color: #1a1a1a;
+  --modal-box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+
+  --pagination-link-color: #6b6b6b;
+  --pagination-border-color: transparent;
+
+  --category-color: #39404b;
+  --category-background-color: #f6f6f6;
+  --category-border-color: #e8e8e8;
+  --category-link-color: #39404b;
+  --category-link-hover-color: #111111;
+
+  --item-border-color: #f0f0f0;
+  --item-padding: 10px;
+  --item-title-link-font-weight: 600;
+
+  --item-status-read-title-link-color: #8a8a8a;
+  --item-status-read-title-focus-color: #111111;
+
+  --item-meta-focus-color: #111111;
+  --item-meta-li-color: #6f6f6f;
+
+  --current-item-border-width: 0;
+  --current-item-border-color: transparent;
+  --current-item-box-shadow: none;
+
+  --entry-header-border-color: transparent;
+  --entry-header-title-link-color: #111111;
+  --entry-content-color: #333a45;
+  --entry-content-code-color: #333333;
+  --entry-content-code-background: #f7f7f7;
+  --entry-content-code-border-color: #e8e8e8;
+  --entry-content-quote-color: #5f5f5f;
+  --entry-content-abbr-border-color: #999999;
+  --entry-enclosure-border-color: #e8e8e8;
+
+  --parsing-error-color: #a33333;
+  --feed-parsing-error-background-color: #fdf1f1;
+  --feed-parsing-error-border-style: solid;
+  --feed-parsing-error-border-color: #e5b4b4;
+
+  --feed-has-unread-background-color: transparent;
+  --feed-has-unread-border-style: solid;
+  --feed-has-unread-border-color: transparent;
+
+  --category-has-unread-background-color: transparent;
+  --category-has-unread-border-style: solid;
+  --category-has-unread-border-color: transparent;
+
+  --keyboard-shortcuts-li-color: #39404b;
+  --counter-color: #6f6f6f;
+}
+
+/* ═══════════════ Dark ═══════════════ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #2a2a2a;
+    --surface-hover: #353535;
+    --hairline: #353535;
+    --accent: #0974ff;
+    --accent-soft: rgba(9, 116, 255, 0.18);
+    --text-muted: #a8a8a8;
+    --entry-link-color: #f6f6f6;
+
+    --glass-bg: rgba(38, 38, 38, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.55),
+      0 1px 2px rgba(0, 0, 0, 0.4);
+
+    --body-color: #d4d4d4;
+    --body-background: #262626;
+    --hr-border-color: #353535;
+    --title-color: #f6f6f6;
+    --link-color: #f6f6f6;
+    --link-focus-color: #ffffff;
+    --link-hover-color: #ffffff;
+    --link-visited-color: #f6f6f6;
+
+    --header-list-border-color: #353535;
+    --header-link-color: #cfcfcf;
+    --header-link-focus-color: #ffffff;
+    --header-link-hover-color: #ffffff;
+    --header-active-link-color: #ffffff;
+
+    --page-header-title-border-color: transparent;
+
+    --logo-color: #f6f6f6;
+    --logo-hover-color-span: #f6f6f6;
+
+    --table-border-color: #353535;
+    --table-th-background: #2a2a2a;
+    --table-th-color: #d4d4d4;
+    --table-tr-hover-background-color: #2f2f2f;
+    --table-tr-hover-color: #ffffff;
+
+    --button-primary-border-color: #0974ff;
+    --button-primary-background: #0974ff;
+    --button-primary-color: #ffffff;
+    --button-primary-focus-border-color: #3a8bff;
+    --button-primary-focus-background: #3a8bff;
+
+    --input-border: 1px solid #3a3a3a;
+    --input-background: #2a2a2a;
+    --input-color: #e6e6e6;
+    --input-placeholder-color: #8a8a8a;
+
+    --input-focus-color: #ffffff;
+    --input-focus-border-color: #0974ff;
+    --input-focus-box-shadow: 0 0 0 3px var(--accent-soft);
+
+    --alert-color: #e0c98a;
+    --alert-background-color: #2a2519;
+    --alert-border-color: #4a3f22;
+
+    --alert-success-color: #a9d9b4;
+    --alert-success-background-color: #1e2a21;
+    --alert-success-border-color: #2f4433;
+
+    --alert-error-color: #f0b8b8;
+    --alert-error-background-color: #2a1e1e;
+    --alert-error-border-color: #4a2e2e;
+
+    --alert-info-color: #a9c9e8;
+    --alert-info-background-color: #1d242d;
+    --alert-info-border-color: #2c3a49;
+
+    --panel-background: #2a2a2a;
+    --panel-border-color: #353535;
+    --panel-color: #d4d4d4;
+
+    --modal-background: #2a2a2a;
+    --modal-color: #e6e6e6;
+    --modal-box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+
+    --pagination-link-color: #b5b5b5;
+    --pagination-border-color: transparent;
+
+    --category-color: #d4d4d4;
+    --category-background-color: #2a2a2a;
+    --category-border-color: #353535;
+    --category-link-color: #d4d4d4;
+    --category-link-hover-color: #ffffff;
+
+    --item-border-color: #303030;
+    --item-padding: 10px;
+    --item-title-link-font-weight: 600;
+
+    --item-status-read-title-link-color: #858585;
+    --item-status-read-title-focus-color: #ffffff;
+
+    --item-meta-focus-color: #ffffff;
+    --item-meta-li-color: #a8a8a8;
+
+    --current-item-border-width: 0;
+    --current-item-border-color: transparent;
+    --current-item-box-shadow: none;
+
+    --entry-header-border-color: transparent;
+    --entry-header-title-link-color: #f6f6f6;
+    --entry-content-color: #d4d4d4;
+    --entry-content-code-color: #d4d4d4;
+    --entry-content-code-background: #2a2a2a;
+    --entry-content-code-border-color: #353535;
+    --entry-content-quote-color: #b0b0b0;
+    --entry-content-abbr-border-color: #9b9b9b;
+    --entry-enclosure-border-color: #353535;
+
+    --parsing-error-color: #f0b8b8;
+    --feed-parsing-error-background-color: #2a1e1e;
+    --feed-parsing-error-border-style: solid;
+    --feed-parsing-error-border-color: #6b3b3b;
+
+    --feed-has-unread-background-color: transparent;
+    --feed-has-unread-border-style: solid;
+    --feed-has-unread-border-color: transparent;
+
+    --category-has-unread-background-color: transparent;
+    --category-has-unread-border-style: solid;
+    --category-has-unread-border-color: transparent;
+
+    --keyboard-shortcuts-li-color: #d4d4d4;
+    --counter-color: #a8a8a8;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+}
+
+/* ═══════════════ Basis ═══════════════ */
+html {
+  color-scheme: light;
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: #6a6a6a transparent;
+}
+
+body {
+  background: var(--body-background);
+  color: var(--body-color);
+  font-family: var(--font-family);
+  font-weight: 400;
+  line-height: 1.5;
+  padding-bottom: 6rem; /* Platz für die schwebende Leiste */
+}
+
+h1,
+h2,
+h3,
+.entry header h1 {
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Trennlinien durchgehend dünn und durchgezogen */
+hr {
+  border: 0;
+  border-top: 1px solid var(--hr-border-color);
+}
+
+/* ═══════════════ Header: zentrierte Icon-Leiste ═══════════════ */
+.header {
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Logo raus */
+.header nav .logo {
+  display: none;
+}
+
+/* Zentriert – ID, weil Miniflux #header-menu selbst stylt */
+#header-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#header-menu > li {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0;
+}
+
+#header-menu form {
+  display: flex;
+  margin: 0;
+}
+
+/* „(+)“ raus */
+#header-menu a[href="/subscribe"] {
+  display: none;
+}
+
+.header nav .icon {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  min-width: 1.15rem;
+  fill: currentColor;
+  color: inherit;
+}
+
+/* Icon-Knopf: Label liegt als Textknoten dahinter und wird weggeschnitten */
+#header-menu a,
+#header-menu .logout-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.45rem;
+  min-width: 2rem;
+  max-width: 2rem;
+  min-height: 2.1rem;
+  padding: 0.4rem 0.45rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius);
+  background: none;
+  color: var(--header-link-color);
+  font-family: inherit;
+  font-size: 0.85rem;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: max-width 0.24s var(--ease);
+}
+
+/* Label nur beim aktiven Tab, kein Hover-Effekt */
+#header-menu li.active > a,
+#header-menu a.active,
+#header-menu li.active .logout-button {
+  max-width: 16rem;
+  color: var(--header-active-link-color);
+}
+
+/* Zähler nur beim aktiven Tab, Zahlen gleich breit */
+#header-menu .unread-counter-wrapper,
+#header-menu .error-feeds-counter-wrapper {
+  display: none;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+}
+
+#header-menu li.active .unread-counter-wrapper,
+#header-menu li.active .error-feeds-counter-wrapper {
+  display: inline;
+}
+
+.page-header h1 {
+  letter-spacing: -0.02em;
+  font-size: 1.6rem;
+}
+
+/* ═══════════════ Aktionen unter der Seiten-Headline ═══════════════ */
+/* Gilt für jede benannte Nav (Ungelesen Menü, Abonnements Menü, …) */
+
+/* Textknoten auf jeder Ebene entschärfen – Miniflux streut Kommas
+   zwischen die Listeneinträge, teils ausserhalb der ul */
+nav[aria-label],
+nav[aria-label] ul,
+nav[aria-label] li {
+  font-size: 0;
+}
+
+nav[aria-label] ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0.3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav[aria-label] li {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav[aria-label] form {
+  display: flex;
+  margin: 0;
+}
+
+/* Miniflux setzt zwischen den Einträgen Trennzeichen – komplett raus */
+nav[aria-label] *::before,
+nav[aria-label] *::after {
+  content: none !important;
+  display: none !important;
+}
+
+nav[aria-label] .icon,
+nav[aria-label] svg {
+  flex: none;
+  display: block;
+  width: 0.95rem;
+  height: 0.95rem;
+  min-width: 0.95rem;
+  fill: currentColor;
+  color: inherit;
+}
+
+/* Standard: nur das Symbol, Text ist abgeschnitten */
+nav[aria-label] a,
+nav[aria-label] button,
+.page-link,
+.page-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.4rem;
+  min-width: 2rem;
+  max-width: 2rem;
+  min-height: 2rem;
+  padding: 0.35rem 0.45rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius);
+  background: none;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.85rem;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    max-width 0.2s var(--ease),
+    background-color 0.15s var(--ease),
+    color 0.15s var(--ease);
+}
+
+/* Text erst nach ~0,5 s Hover einblenden */
+nav[aria-label] a:hover,
+nav[aria-label] button:hover,
+.page-link:hover,
+.page-button:hover {
+  max-width: 22rem;
+  background: var(--surface-hover);
+  color: var(--title-color);
+  transition-delay: 0.5s, 0s, 0s;
+}
+
+/* Tastaturfokus ohne Verzögerung */
+nav[aria-label] a:focus-visible,
+nav[aria-label] button:focus-visible,
+.page-link:focus-visible,
+.page-button:focus-visible {
+  max-width: 22rem;
+  background: var(--surface-hover);
+  color: var(--title-color);
+}
+
+/* ═══════════════ Artikelliste ═══════════════ */
+.item {
+  padding: var(--item-padding) 0.5rem;
+  border: 0;
+  border-bottom: 1px solid var(--item-border-color);
+  border-radius: 0;
+  background: none;
+}
+
+.item-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.item-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  color: var(--title-color);
+}
+
+.item-title a,
+.item-title a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Favicon im Titel raus */
+.item-title img {
+  display: none;
+}
+
+.item-status-read .item-title {
+  font-weight: 400;
+  color: var(--item-status-read-title-link-color);
+}
+
+.item-header .category a,
+.item-header .category a:visited {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+/* Meta-Zeile: Infos links, Aktionen rechts */
+.item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem 0.75rem;
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.item-meta-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0;
+}
+
+.item-meta-info li {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-size: 0.78rem;
+  color: inherit;
+}
+
+/* Keine Trenner – weder Komma noch Strich, egal wo sie herkommen */
+.item-meta-info *::before,
+.item-meta-info *::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Feed-Titel bleibt ein Link */
+.item-meta-info a,
+.item-meta-info a:visited {
+  color: inherit;
+  font-size: inherit;
+  text-decoration: none;
+}
+
+.item-meta-info a:hover {
+  color: var(--title-color);
+  text-decoration: underline;
+}
+
+/* Aktionen: nur Icons, rechtsbündig */
+.item-meta-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  margin: 0 0 0 auto;
+  padding: 0;
+  list-style: none;
+  font-size: 0;
+}
+
+.item-meta-icons li {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.item-meta-icons *::before,
+.item-meta-icons *::after {
+  content: none !important;
+  display: none !important;
+}
+
+.item-meta-icons a,
+.item-meta-icons button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: none;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.item-meta-icons .icon,
+.item-meta-icons svg {
+  flex: none;
+  display: block;
+  width: 0.95rem;
+  height: 0.95rem;
+  min-width: 0.95rem;
+  fill: currentColor;
+  color: inherit;
+}
+
+/* Textlabels der Icons raus */
+.item-meta-icons .icon-label {
+  display: none;
+}
+
+.item-meta-icons a:hover,
+.item-meta-icons button:hover,
+.item-meta-icons a:focus-visible,
+.item-meta-icons button:focus-visible {
+  background: var(--surface-hover);
+  color: var(--title-color);
+}
+
+/* Kategorien ohne ungelesene Artikel ausblenden (Zähler 0) */
+.category-item:not(.category-has-unread) {
+  display: none;
+}
+
+/* Ausgewählter Eintrag: dezente Fläche + Akzentkante */
+.current-item {
+  background: var(--surface-hover);
+  box-shadow: inset 3px 0 0 var(--accent);
+  border-bottom-color: var(--item-border-color);
+}
+
+.feed,
+.category {
+  border-radius: var(--radius);
+}
+
+/* ═══════════════ Artikel ▸ Kopf ═══════════════ */
+.entry header {
+  max-width: 34em;
+  margin: 1rem auto 1.75rem;
+  padding-bottom: 0;
+  border-bottom: 0;
+  text-align: center;
+}
+
+.entry header h1 {
+  font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.5rem;
+  text-align: center;
+  color: var(--title-color);
+}
+
+/* Titel-Link bleibt hell (auch als besuchter Link) */
+.entry header h1 a,
+.entry header h1 a:link,
+.entry header h1 a:visited,
+.entry header h1 a:hover,
+.entry header h1 a:focus {
+  color: var(--title-color);
+  text-decoration: none;
+}
+
+/* Meta unter dem Titel: zentriert, Autor über Quelle */
+.entry-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* font-size: 0 schluckt den „– “-Textknoten vor dem Autor */
+.entry-meta .entry-author {
+  order: 1;
+  font-size: 0;
+  color: var(--title-color);
+}
+
+.entry-meta .entry-author em {
+  font-size: 0.9rem;
+  font-style: normal;
+  color: var(--title-color);
+}
+
+.entry-meta .entry-website {
+  order: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* Kategorie, Datum und Lesezeit raus */
+.entry-meta .entry-category,
+.entry-meta .category,
+.entry-meta .entry-date,
+.entry-meta .entry-time,
+.entry-meta .entry-reading-time,
+.entry-meta time {
+  display: none;
+}
+
+/* Favicon und die nackte URL ausblenden */
+.entry header img {
+  display: none;
+}
+
+.entry header a[href^="http"] {
+  display: none;
+}
+
+/* Titel- und Feed-Link bleiben */
+.entry header h1 a[href^="http"],
+.entry header .entry-title a[href^="http"],
+.entry header .entry-website a[href^="http"] {
+  display: inline;
+}
+
+.entry-meta a,
+.entry-meta a:visited {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.entry-meta a:hover {
+  color: var(--title-color);
+  text-decoration: underline;
+}
+
+/* Anhänge raus */
+.entry-enclosures,
+.entry-enclosure {
+  display: none;
+}
+
+/* Schlagworte raus (inkl. „Stichworte:“ und Aufklapper) */
+.entry-tags,
+.entry header details,
+.entry header summary {
+  display: none;
+}
+
+/* ═══════════════ Artikel-Aktionen: schwebende Leiste ═══════════════ */
+.entry-actions {
+  position: fixed;
+  inset: auto 0 1.25rem 0;
+  width: fit-content;
+  max-width: calc(100vw - 2rem);
+  margin: 0 auto;
+  z-index: 20;
+  padding: 0.3rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+}
+
+.entry-actions ul {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0;
+}
+
+.entry-actions li {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.entry-actions *::before,
+.entry-actions *::after {
+  content: none !important;
+  display: none !important;
+}
+
+.entry-actions .icon {
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  min-width: 1.1rem;
+  fill: currentColor;
+  color: inherit;
+}
+
+.entry-actions ul a,
+.entry-actions ul button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  min-width: 2.2rem;
+  min-height: 2.2rem;
+  padding: 0.4rem;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--header-link-color);
+  font-family: inherit;
+  font-size: 0; /* Labels dauerhaft aus */
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.entry-actions ul a:hover,
+.entry-actions ul a:focus-visible,
+.entry-actions ul button:hover,
+.entry-actions ul button:focus-visible {
+  background: var(--surface-hover);
+  color: var(--header-link-hover-color);
+}
+
+/* Leere Blöcke nicht mit Abstand mitschieben */
+.entry-tags:empty,
+.entry-enclosures:empty,
+.entry-actions ul:empty {
+  display: none;
+}
+
+/* ═══════════════ Artikel ▸ Text ═══════════════ */
+.entry-content {
+  max-width: 34em;
+  margin: 0 auto;
+  font-family: var(--font-serif);
+  font-size: 1.1875rem;
+  line-height: 1.7;
+  color: var(--entry-content-color);
+  text-wrap: pretty;
+  hyphens: auto;
+}
+
+.entry-content p,
+.entry-content ul,
+.entry-content ol,
+.entry-content blockquote,
+.entry-content pre,
+.entry-content table,
+.entry-content figure,
+.entry-content details,
+.entry-content address {
+  margin: 1.25rem 0;
+}
+
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+  margin: 2.25rem 0 0.75rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  font-family: var(--font-family);
+  font-weight: 700;
+  text-wrap: balance;
+  hyphens: none;
+  color: var(--title-color);
+}
+
+.entry-content h2 { font-size: 1.45rem; }
+.entry-content h3 { font-size: 1.2rem; }
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 { font-size: 1.02rem; }
+
+/* Links und besuchte Links identisch */
+.entry-content a,
+.entry-content a:link,
+.entry-content a:visited {
+  color: var(--entry-link-color);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+.entry-content a:hover,
+.entry-content a:focus {
+  text-decoration-thickness: 2px;
+}
+
+/* Zitate: Schriftart und Größe aus dem Feed-Inhalt neutralisieren */
+.entry-content blockquote {
+  margin: 1.75rem 0;
+  padding: 0.15rem 0 0.15rem 1.1rem;
+  border-left: 2px solid var(--hairline);
+  color: var(--entry-content-quote-color);
+  font-family: inherit;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: normal;
+}
+
+.entry-content blockquote p {
+  margin: 0.6rem 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: normal;
+}
+
+.entry-content blockquote p:first-child {
+  margin-top: 0;
+}
+
+.entry-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.entry-content blockquote cite,
+.entry-content blockquote footer {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85em;
+  font-style: normal;
+  color: var(--text-muted);
+}
+
+/* Bilder ohne Rahmen */
+.entry-content img,
+.entry-content picture,
+.entry-content video,
+.entry-content canvas,
+.entry-content iframe,
+.entry-content embed,
+.entry-content object,
+.entry-content figure,
+.entry-content a:has(img),
+.entry-content a:has(picture) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.75rem auto;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  border-radius: 4px;
+}
+
+.entry-content iframe[src*="youtube"],
+.entry-content iframe[src*="youtu.be"],
+.entry-content iframe[src*="vimeo"] {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+.entry-content figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.entry-content figure > figure,
+.entry-content figure > a {
+  width: 100%;
+}
+
+.entry-content figcaption {
+  margin-top: 0.5rem;
+  max-width: 60ch;
+  font-family: var(--font-family);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  text-align: center;
+  hyphens: none;
+}
+
+.entry-content code {
+  padding: 0.1em 0.35em;
+  border: 1px solid var(--entry-content-code-border-color);
+  border-radius: 4px;
+  background: var(--entry-content-code-background);
+  color: var(--entry-content-code-color);
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+.entry-content pre {
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--entry-content-code-border-color);
+  border-radius: 4px;
+  background: var(--entry-content-code-background);
+  font-family: var(--font-mono);
+  line-height: 1.55;
+  overflow-x: auto;
+  hyphens: none;
+}
+
+.entry-content pre code {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 0.8125rem;
+  font-variant-ligatures: none;
+}
+
+.entry-content ul,
+.entry-content ol {
+  padding-left: 1.25rem;
+  margin-left: 0;
+}
+
+.entry-content ul { list-style: disc; }
+.entry-content ol { list-style: decimal; }
+
+.entry-content li {
+  margin: 0.35rem 0;
+  line-height: 1.6;
+}
+
+.entry-content hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid var(--hr-border-color);
+}
+
+.entry-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.entry-content th,
+.entry-content td {
+  padding: 0.5rem 0.65rem;
+  border-bottom: 1px solid var(--table-border-color);
+  text-align: left;
+}
+
+/* Trennlinie zwischen Artikel und Pagination raus */
+.entry hr:not(.entry-content hr) {
+  display: none;
+}
+
+/* ═══════════════ Steuerelemente / Blättern ═══════════════ */
+input,
+select,
+textarea,
+button,
+.button,
+input[type="submit"] {
+  border-radius: var(--radius);
+}
+
+/* Blättern zwischen Artikellisten und Artikeln raus */
+.pagination-top,
+.pagination-bottom,
+.pagination-entry-top,
+.pagination-entry-bottom {
+  display: none;
+}
+
+/* „Diese Seite als gelesen markieren“ am Listenende raus – oben bleibt es */
+.page-footer {
+  display: none;
+}
+
+/* ═══════════════ Animationen ═══════════════ */
+@media (prefers-reduced-motion: no-preference) {
+  a,
+  button,
+  .button,
+  input,
+  select,
+  textarea,
+  .item,
+  .item-meta-icons a,
+  .item-meta-icons button,
+  .entry-actions ul a {
+    transition:
+      color 0.15s var(--ease),
+      background-color 0.15s var(--ease),
+      border-color 0.15s var(--ease),
+      opacity 0.15s var(--ease);
+  }
+
+  .button:hover,
+  button:hover {
+    transform: translateY(-1px);
+  }
+
+  .button:active,
+  button:active {
+    transform: translateY(0);
+  }
+
+  /* Bewusst ohne transform: das würde position: fixed der Aktionsleiste brechen */
+  .entry {
+    animation: entry-in 0.25s var(--ease) both;
+  }
+
+  .entry-actions {
+    animation: bar-in 0.3s var(--ease) both;
+  }
+
+  @keyframes entry-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes bar-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ═══════════════ Schmal ═══════════════ */
+@media (max-width: 600px) {
+  .entry header,
+  .entry-content {
+    max-width: 100%;
+  }
+
+  .entry-content {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  .item {
+    padding: 10px 0;
+  }
+
+  .item-meta {
+    flex-wrap: nowrap;
+  }
+
+  .item-meta-info {
+    overflow: hidden;
+    flex-wrap: nowrap;
+    gap: 0.35rem;
+  }
+
+  .item-meta-info li {
+    white-space: nowrap;
+  }
+
+  #header-menu a,
+  #header-menu .logout-button {
+    min-width: 1.9rem;
+    max-width: 1.9rem;
+    min-height: 1.9rem;
+  }
+
+  #header-menu li.active > a {
+    max-width: 12rem;
+  }
+
+  nav[aria-label] a,
+  nav[aria-label] button,
+  .page-link,
+  .page-button {
+    min-width: 1.9rem;
+    max-width: 1.9rem;
+    min-height: 1.9rem;
+  }
+
+  .entry-actions ul a,
+  .entry-actions ul button {
+    min-width: 2rem;
+    min-height: 2rem;
+  }
+}
