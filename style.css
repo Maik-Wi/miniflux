@@ -429,11 +429,6 @@ hr {
   display: inline;
 }
 
-.page-header h1 {
-  letter-spacing: -0.02em;
-  font-size: 1.6rem;
-}
-
 /* ═══════════════ Aktionen unter der Seiten-Headline ═══════════════ */
 /* Gilt für jede benannte Nav (Ungelesen Menü, Abonnements Menü, …) */
 
@@ -930,7 +925,7 @@ nav[aria-label] button:focus-visible,
 
 /* ═══════════════ Artikel ▸ Text ═══════════════ */
 .entry-content {
-  max-width: 34em;
+  max-width: var(--content-reading-width);
   margin: 0 auto;
   font-family: var(--font-serif);
   font-size: 1.1875rem;
@@ -1156,19 +1151,6 @@ input[type="submit"] {
   border-radius: var(--radius);
 }
 
-/* Blättern zwischen Artikellisten und Artikeln raus */
-.pagination-top,
-.pagination-bottom,
-.pagination-entry-top,
-.pagination-entry-bottom {
-  display: none;
-}
-
-/* „Diese Seite als gelesen markieren“ am Listenende raus – oben bleibt es */
-.page-footer {
-  display: none;
-}
-
 /* ═══════════════ Animationen ═══════════════ */
 @media (prefers-reduced-motion: no-preference) {
   a,
@@ -1308,6 +1290,7 @@ input[type="submit"] {
   --shadow-card: 0 4px 18px rgba(0, 0, 0, 0.045);
   --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.12);
   --content-width: 76rem;
+  --list-width: 68rem;
   --content-reading-width: 42rem;
 }
 
@@ -1818,10 +1801,6 @@ dialog::backdrop {
   backdrop-filter: blur(3px);
 }
 
-.entry-content {
-  max-width: var(--content-reading-width);
-}
-
 .entry-content img,
 .entry-content video,
 .entry-content iframe {
@@ -2190,6 +2169,13 @@ body:has(#form-cjk-reading-speed) .page-header nav[aria-label] a:hover {
 .pagination-entry-top,
 .pagination-entry-bottom {
   display: block;
+}
+
+.items,
+.pagination-top,
+.pagination-bottom {
+  width: min(100%, var(--list-width));
+  margin-inline: auto;
 }
 
 /* ═══════════════ Ruhige Icon-Navigation ═══════════════ */
@@ -2579,7 +2565,6 @@ input[type="submit"]:disabled {
   background: var(--surface-hover);
 }
 
-/* Artikelaktionen und Zurück-nach-oben bleiben reine Icon-Controls. */
 .entry-actions ul a,
 .entry-actions ul button,
 .entry-actions ul a:hover,
@@ -2684,12 +2669,10 @@ body:has(.items.hide-read-items) .pagination-bottom {
   display: none;
 }
 
-/* Categories without unread entries are empty in this view. */
 .category-item:not(.category-has-unread) {
   display: none;
 }
 
-/* Article metadata: source, author and published date get a little more room. */
 .entry-meta .entry-author em,
 .entry-meta .entry-author a,
 .entry-meta .entry-website,
@@ -2697,8 +2680,6 @@ body:has(.items.hide-read-items) .pagination-bottom {
   font-size: 1rem;
 }
 
-/* Finale Präzisierung der Seitenaktionen: mittig ausrichten und Labels im
-   Ruhezustand vollständig verbergen, damit wirklich nur das SVG sichtbar ist. */
 .page-header nav[aria-label] {
   width: 100%;
 }
@@ -2856,4 +2837,78 @@ body:has(#form-cjk-reading-speed) .page-header nav[aria-label] li:first-child a:
   padding-inline: 0.75rem;
   color: var(--accent);
   font-size: 0.84rem;
+}
+
+.pagination .elevator,
+.pagination .elevator:hover,
+.pagination .elevator:focus-visible {
+  display: inline-flex;
+  flex: 0 0 2.6rem;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 2.6rem;
+  min-width: 2.6rem;
+  max-width: 2.6rem;
+  height: 2.6rem;
+  min-height: 2.6rem;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.pagination .elevator .icon {
+  display: block;
+  flex: 0 0 1rem;
+  width: 1rem;
+  height: 1rem;
+  min-width: 1rem;
+  margin: 0;
+}
+
+nav[aria-label] .confirm button,
+.confirm button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  min-height: 2.25rem;
+  padding: 0.45rem 0.75rem;
+  overflow: visible;
+  font-size: 0.84rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+nav[aria-label] .confirm button:hover,
+nav[aria-label] .confirm button:focus-visible,
+.confirm button:hover,
+.confirm button:focus-visible {
+  width: auto;
+  max-width: none;
+  font-size: 0.84rem;
+}
+
+main > form:has(#form-cjk-reading-speed) > fieldset {
+  position: relative;
+  padding-top: 4.5rem;
+}
+
+main > form:has(#form-cjk-reading-speed) > fieldset > legend {
+  position: absolute;
+  inset: 1.2rem 1.5rem auto;
+  width: auto;
+  margin: 0;
+  padding: 0 0 0.8rem;
+}
+
+@media (max-width: 600px) {
+  main > form:has(#form-cjk-reading-speed) > fieldset {
+    padding-top: 4rem;
+  }
+
+  main > form:has(#form-cjk-reading-speed) > fieldset > legend {
+    inset-inline: 1rem;
+  }
 }
