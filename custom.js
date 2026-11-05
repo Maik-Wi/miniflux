@@ -3,7 +3,7 @@
 const activePage = document.querySelector("#header-menu li.active [data-page]")?.dataset.page;
 
 for (const element of document.querySelectorAll(
-  ".page-footer, .pagination-entry-top, .pagination-entry-bottom, .category-item:not(.category-has-unread)",
+  ".page-footer, .category-item:not(.category-has-unread)",
 )) {
   element.remove();
 }

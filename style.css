@@ -307,7 +307,8 @@ h3,
 }
 
 ::selection {
-  background: var(--accent-soft);
+  background: #fff1a8;
+  color: #292929;
 }
 
 :focus-visible {
